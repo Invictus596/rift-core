@@ -1,0 +1,18 @@
+{
+  "name": "rift-core",
+  "version": "1.0.0",
+  "description": "Rift - Bitcoin L2 Execution Layer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bitcoin",
+    "starknet",
+    "zk-proofs",
+    "blockchain",
+    "layer2"
+  ],
+  "author": "",
+  "license": "MIT"
+}
