@@ -8,23 +8,9 @@ How Rift brings Bitcoin security to Starknet execution.
 
 Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
 
-> **📡 1. User Broadcasts**
-> A Bitcoin user sends a transaction with the `OP_RETURN "RIFT"` tag to the network.
+![Rift Flowchart](https://mermaid.ink/img/pako:eNpVkM1qwzAQhF9F7NTA-QIOhV5KITSXQC8l1tpayVbyR7YRjO-e1U5KAz0sM_vN7K5QW80oI-z1c_PAa-a84a_n54HjR7bjl_rTz5OfL-fH2_v19fP69vnx_Xw5Pdx_vN2_fT9s-wdqf9QWqB-oQzSj8uCFyqH2kLw2aK_QIO6c9vYI9Z0Gq3v0iK5DcxO0c9AG7R2aO43-_8kR3Y46dLS_oF_R7dAv6H6hX9E9Qv-Ffmc_sF-4L-w_NoxYI2Y8IkZMOCJmPCLW7FhxzY4V1-xYcc2OFdfsWHHNjhV37Fhxx44Vd-xYcc_O_wLqdx8A)
 
-⬇️ *0 Seconds (Mempool)*
-
-> **🕵️ 2. Watcher Detects**
-> The Python Watcher spots the unconfirmed transaction instantly. It extracts the **Signature** and **Public Key** and relays them to Starknet.
-
-⬇️ *Relayed to Starknet*
-
-> **⚖️ 3. Verifier Proves**
-> The **Rift Verifier** (Cairo contract) uses **Garaga** to cryptographically verify the Bitcoin signature on-chain inside a ZK-proof.
-
-⬇️ *Sub-Second Execution*
-
-> **⚡ 4. Executor Mints**
-> Once verified, the **Executor Contract** triggers the logic (Minting Runes, swapping tokens, or updating game state).
+*(Figure 1: The Watcher listens to the Mempool, extracts the signature, and proves validity on Starknet in sub-seconds.)*
 
 ---
 
