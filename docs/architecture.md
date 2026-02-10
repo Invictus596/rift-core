@@ -8,9 +8,30 @@ How Rift brings Bitcoin security to Starknet execution.
 
 Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
 
-![Rift Architecture Diagram](https://mermaid.ink/img/pako:eNpVkM1qwzAQhF9F7NTA-QIOhV5KITSXQC8l1tpayVbyR7YRjO-e1U5KAz0sM_vN7K5QW80oI-z1c_PAa-a84a_n54HjR7bjl_rTz5OfL-fH2_v19fP69vnx_Xw5Pdx_vN2_fT9s-wdqf9QWqB-oQzSj8uCFyqH2kLw2aK_QIO6c9vYI9Z0Gq3v0iK5DcxO0c9AG7R2aO43-_8kR3Y46dLS_oF_R7dAv6H6hX9E9Qv-Ffmc_sF-4L-w_NoxYI2Y8IkZMOCJmPCLW7FhxzY4V1-xYcc2OFdfsWHHNjhV37Fhxx44Vd-xYcc_O_wLqdx8A)
-
-*(Diagram: The Watcher listens to the Mempool, extracts the signature, and sends it to the Starknet Verifier for instant settlement.)*
+```text
++----------------+          +-------------------+          +------------------+
+|  Bitcoin User  | -------> |  Bitcoin Mempool  | -------> |   Watcher (Py)   |
++----------------+   (Tx)   +-------------------+          +------------------+
+                                      |                             |
+                                      |                             | (1) Detect "RIFT"
+                                      |                             v
+                                      |                   +--------------------+
+                                      |                   |  Starknet Verifier |
+                                      |                   |   (Cairo + Garaga) |
+                                      |                   +--------------------+
+                                      |                             |
+                                      |                             | (2) Verify Sig
+                                      v                             v
+                                +------------+            +--------------------+
+                                |  Bitcoin   |            |    Executor (L2)   |
+                                | Finality   |            +--------------------+
+                                | (10 Mins)  |                      |
+                                +------------+                      | (3) Mint/Swap
+                                                                    v
+                                                          +--------------------+
+                                                          |    Starknet User   |
+                                                          +--------------------+
+```
 
 ---
 
