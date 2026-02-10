@@ -8,26 +8,22 @@ How Rift brings Bitcoin security to Starknet execution.
 
 Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
 
-> [!NOTE]
-> **1. 📡 User Broadcasts**
+> **📡 1. User Broadcasts**
 > A Bitcoin user sends a transaction with the `OP_RETURN "RIFT"` tag to the network.
 
 ⬇️ *0 Seconds (Mempool)*
 
-> [!TIP]
-> **2. 🕵️ Watcher Detects**
+> **🕵️ 2. Watcher Detects**
 > The Python Watcher spots the unconfirmed transaction instantly. It extracts the **Signature** and **Public Key** and relays them to Starknet.
 
 ⬇️ *Relayed to Starknet*
 
-> [!IMPORTANT]
-> **3. ⚖️ Verifier Proves**
+> **⚖️ 3. Verifier Proves**
 > The **Rift Verifier** (Cairo contract) uses **Garaga** to cryptographically verify the Bitcoin signature on-chain inside a ZK-proof.
 
 ⬇️ *Sub-Second Execution*
 
-> [!CAUTION]
-> **4. ⚡ Executor Mints**
+> **⚡ 4. Executor Mints**
 > Once verified, the **Executor Contract** triggers the logic (Minting Runes, swapping tokens, or updating game state).
 
 ---
