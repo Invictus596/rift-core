@@ -1,6 +1,7 @@
 # Table of Contents
 
 * [Home](README.md)
+* [🚀 Getting Started](docs/getting_started.md)
 
 ## Documentation
 * [🏗️ Architecture](docs/architecture.md)
