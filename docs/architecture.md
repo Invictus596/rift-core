@@ -6,32 +6,11 @@ How Rift brings Bitcoin security to Starknet execution.
 
 ## 🔄 The Execution Flow
 
-Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
+Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions. We verify the transaction **before** it is mined in a block.
 
-```text
-+----------------+          +-------------------+          +------------------+
-|  Bitcoin User  | -------> |  Bitcoin Mempool  | -------> |   Watcher (Py)   |
-+----------------+   (Tx)   +-------------------+          +------------------+
-                                      |                             |
-                                      |                             | (1) Detect "RIFT"
-                                      |                             v
-                                      |                   +--------------------+
-                                      |                   |  Starknet Verifier |
-                                      |                   |   (Cairo + Garaga) |
-                                      |                   +--------------------+
-                                      |                             |
-                                      |                             | (2) Verify Sig
-                                      v                             v
-                                +------------+            +--------------------+
-                                |  Bitcoin   |            |    Executor (L2)   |
-                                | Finality   |            +--------------------+
-                                | (10 Mins)  |                      |
-                                +------------+                      | (3) Mint/Swap
-                                                                    v
-                                                          +--------------------+
-                                                          |    Starknet User   |
-                                                          +--------------------+
-```
+![Rift Architecture Diagram](images/architecture_flow.png)
+
+*(Figure 1: The Rift Watcher listens to the Mempool, extracts the signature, and proves validity on Starknet in sub-seconds.)*
 
 ---
 
