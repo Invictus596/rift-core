@@ -1,6 +1,6 @@
 # Table of Contents
 
-* [🏠 Home](README.md)
+* [⚡ Rift](README.md)
 * [🚀 Getting Started](docs/getting_started.md)
 
 ## Documentation
