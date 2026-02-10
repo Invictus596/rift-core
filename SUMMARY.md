@@ -1,6 +1,6 @@
 # Table of Contents
 
-* [Home](README.md)
+* [🏠 Home](README.md)
 * [🚀 Getting Started](docs/getting_started.md)
 
 ## Documentation
