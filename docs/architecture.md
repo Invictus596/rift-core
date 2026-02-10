@@ -8,7 +8,28 @@ How Rift brings Bitcoin security to Starknet execution.
 
 Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
 
-![Rift Flowchart](https://mermaid.ink/img/pako:eNpVkM1qwzAQhF9F7NTA-QIOhV5KITSXQC8l1tpayVbyR7YRjO-e1U5KAz0sM_vN7K5QW80oI-z1c_PAa-a84a_n54HjR7bjl_rTz5OfL-fH2_v19fP69vnx_Xw5Pdx_vN2_fT9s-wdqf9QWqB-oQzSj8uCFyqH2kLw2aK_QIO6c9vYI9Z0Gq3v0iK5DcxO0c9AG7R2aO43-_8kR3Y46dLS_oF_R7dAv6H6hX9E9Qv-Ffmc_sF-4L-w_NoxYI2Y8IkZMOCJmPCLW7FhxzY4V1-xYcc2OFdfsWHHNjhV37Fhxx44Vd-xYcc_O_wLqdx8A)
+```mermaid
+graph TD
+    %% Styling
+    classDef core fill:#2c3e50,stroke:#34495e,stroke-width:2px,color:white;
+    classDef btc fill:#f7931a,stroke:#d35400,stroke-width:2px,color:white;
+    classDef stark fill:#3b3c97,stroke:#2c3e50,stroke-width:2px,color:white;
+
+    %% Nodes
+    User((Bitcoin User)):::btc
+    Mempool[Bitcoin Mempool]:::btc
+    Watcher(Rift Watcher):::core
+    Verifier{Verifier Contract}:::stark
+    Executor[Executor Contract]:::stark
+    L2User((Starknet User)):::stark
+
+    %% Flow (Vertical)
+    User -->|Broadcasts Tx| Mempool
+    Mempool -->|1. Detects OP_RETURN| Watcher
+    Watcher -->|2. Sends Sig + Key| Verifier
+    Verifier -->|3. ZK-Verify Sig| Executor
+    Executor -->|4. Mint Assets| L2User
+```
 
 *(Figure 1: The Watcher listens to the Mempool, extracts the signature, and proves validity on Starknet in sub-seconds.)*
 
