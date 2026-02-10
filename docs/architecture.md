@@ -8,6 +8,8 @@ How Rift brings Bitcoin security to Starknet execution.
 
 Rift eliminates latency by creating a "Fast Lane" for Bitcoin transactions.
 
+<div align="center">
+
 ```mermaid
 graph TD
     %% Styling
@@ -30,6 +32,8 @@ graph TD
     Verifier -->|3. ZK-Verify Sig| Executor
     Executor -->|4. Mint Assets| L2User
 ```
+
+</div>
 
 *(Figure 1: The Watcher listens to the Mempool, extracts the signature, and proves validity on Starknet in sub-seconds.)*
 
