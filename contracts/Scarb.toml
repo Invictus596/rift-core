@@ -5,6 +5,7 @@ edition = "2023_11"
 
 [dependencies]
 starknet = "2.6.4"
+garaga = { git = "https://github.com/keep-starknet-strange/garaga.git", tag = "v1.0.1" }
 
 [[target.starknet-contract]]
 sierra = true
