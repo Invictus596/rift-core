@@ -19,8 +19,7 @@ pub trait IVerifier<TContractState> {
 
 #[starknet::contract]
 pub mod Verifier {
-    use starknet::{ContractAddress, get_caller_address};
-    use core::starknet::storage::{Map, StoragePointerReadAccess, StoragePointerWriteAccess};
+    use starknet::{ContractAddress, get_caller_address, storage::Map};
 
     #[storage]
     struct Storage {
