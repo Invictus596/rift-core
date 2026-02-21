@@ -18,14 +18,17 @@ Rift eliminates Bitcoin's 10-minute block latency by verifying the L1 mempool us
 
 ## 🚀 Project Status & Roadmap
 
-We are currently in **Phase 2** — Verifier contract built and ready for deployment.
+We are currently in **Phase 3** — Python-to-Starknet RPC bridge complete. **Hackathon-ready in mock mode.**
 
 | Phase | Component | Status | Description |
 | :--- | :--- | :--- | :--- |
-| **Phase 1** | The Watcher | ✅ Completed | Python agent listening to Bitcoin Testnet mempool, filtering OP_RETURN "RIFT" tags |
-| **Phase 2** | The Verifier | 🏗️ Build Complete / Deploying | Cairo 2.6.4 contract with interface-implementation pattern. Mock verification enabled for E2E testing. Native secp256k1 precompiles being integrated. |
-| **Phase 3** | The Executor | ⏳ Planned | L2 Contract to mint assets based on verified L1 events |
-| **Phase 4** | The Demo | ⏳ Planned | End-to-end "Snipe" demo: Broadcast L1 Tx → L2 State Update < 2s |
+| **Phase 1** | The Watcher | ✅ Completed | Python agent monitoring Bitcoin mempool, filtering OP_RETURN "RIFT" tags |
+| **Phase 2** | The Verifier | ✅ Build Complete | Cairo 2.6.4 contract with interface-implementation pattern. Mock verification enabled for E2E testing. |
+| **Phase 3** | RPC Bridge | ✅ Complete | Python-to-Starknet bridge using starknet.py. Watcher can now call Verifier contract on Katana/Starknet. |
+| **Phase 4** | The Executor | 📋 Planned | L2 Contract to mint wrapped assets based on verified L1 events ([Plan](docs/PHASE4_EXECUTOR_PLAN.md)) |
+| **Phase 5** | The Demo | 🎯 Hackathon Ready | Mock mode demonstration (full pipeline, simulated Starknet calls) |
+
+> **Note**: On-chain deployment is blocked by RPC compatibility issues with both Sepolia (v0.10+) and Katana (v1.7.1). Both don't support the "pending" block tag that starkli 0.4.2 requires. See [docs/RPC_ISSUES.md](docs/RPC_ISSUES.md) for details. We demonstrate the full architecture in mock mode for the hackathon.
 
 ---
 
@@ -33,9 +36,12 @@ We are currently in **Phase 2** — Verifier contract built and ready for deploy
 
 ```bash
 rift-core-internal/
-├── watcher/                    # Bitcoin mempool listener & data serializer
+├── watcher/                    # Bitcoin mempool listener & Starknet RPC bridge
 │   ├── watcher.py              # Main entry point (Mempool Poller)
-│   └── serializer.py           # Hex-to-Felt converter for Cairo
+│   ├── serializer.py           # Hex-to-Felt converter for Cairo
+│   ├── rpc_bridge.py           # Starknet RPC communication (starknet.py)
+│   ├── test_rpc_bridge.py      # Integration test for RPC bridge
+│   └── README.md               # Watcher-specific documentation
 ├── contracts/                  # Cairo 2.6.4 contracts (Starknet)
 │   ├── src/
 │   │   ├── lib.cairo           # Module exports
@@ -48,7 +54,7 @@ rift-core-internal/
 │   ├── contracts.md            # Deployed contract addresses
 │   └── getting_started.md      # Setup & deployment guide
 ├── scripts/                    # Deployment & Integration scripts (coming soon)
-├── requirements.txt            # Python dependencies
+├── requirements.txt            # Python dependencies (python-bitcoinrpc, starknet.py)
 └── README.md                   # This file
 ```
 
@@ -56,7 +62,34 @@ rift-core-internal/
 
 ## 🔧 Quick Start
 
-### Prerequisites
+### 🎯 Hackathon Demo (Recommended - 2 Minutes)
+
+Due to persistent RPC compatibility issues with Sepolia and Katana (see [docs/RPC_ISSUES.md](docs/RPC_ISSUES.md)), we demonstrate the full pipeline in mock mode.
+
+```bash
+cd ~/rift-core-internal
+
+# Create virtual environment
+python3 -m venv .venv && source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the hackathon demo
+./watcher/run-hackathon-demo.sh
+```
+
+**What this demonstrates**:
+- ✅ Bitcoin mempool monitoring
+- ✅ RIFT tag detection in OP_RETURN data
+- ✅ Transaction parsing and extraction
+- ✅ RPC Bridge ready for Starknet integration
+
+See [docs/HACKATHON_DEMO.md](docs/HACKATHON_DEMO.md) for full presentation guide.
+
+---
+
+### Prerequisites (Full Deployment)
 
 ```bash
 # Install Scarb (Cairo toolchain)
@@ -71,35 +104,41 @@ curl -L https://install.dojoengine.org | bash
 dojoup install
 ```
 
-### Build & Deploy Locally
+---
+
+### Build & Deploy Locally (When RPC Issues Resolved)
 
 ```bash
-# 1. Start Katana (keep running)
-katana --validate
+# 1. Start Katana (keep running in a separate terminal)
+katana --validate-max-steps 4000000 --invoke-max-steps 4000000
 
 # 2. Build the contract
 cd contracts
 scarb clean && scarb build
 
-# 3. Declare to Katana
-starkli --network http://localhost:5050 \
-  declare ./target/dev/rift_verifier_Verifier.contract_class.json
+# 3. Test the RPC Bridge (deploys contract automatically)
+cd ../watcher
+python test_rpc_bridge.py
 
-# 4. Deploy the contract
-starkli --network http://localhost:5050 \
-  deploy <CLASS_HASH> <OWNER_ADDRESS>
+# Note the deployed contract address from the test output
 ```
 
 ### Run the Watcher
 
 ```bash
 # Activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+cd /home/invictus/rift-core-internal
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
-# Start the watcher (mock mode by default)
-python3 watcher/watcher.py
+# Start the watcher (mock mode by default - no Starknet calls)
+python watcher/watcher.py
+
+# Enable Starknet integration (after deploying contract)
+# Edit watcher/watcher.py:
+#   STARKNET_RPC_MODE = True
+#   VERIFIER_CONTRACT_ADDRESS = "0x..."  # From test_rpc_bridge.py output
 ```
 
 ---
@@ -108,6 +147,9 @@ python3 watcher/watcher.py
 
 | Document | Description |
 |----------|-------------|
+| [Hackathon Demo](docs/HACKATHON_DEMO.md) | 🎯 **Quick demo guide for hackathon presentations** |
+| [RPC Issues](docs/RPC_ISSUES.md) | Technical details on Sepolia/Katana RPC compatibility problems |
+| [Phase 4 Plan](docs/PHASE4_EXECUTOR_PLAN.md) | Complete Executor implementation roadmap |
 | [Getting Started](docs/getting_started.md) | Setup guide for local development and deployment |
 | [Architecture](docs/architecture.md) | System design, data flow, and contract details |
 | [Tech Stack](docs/tech_stack.md) | Technology choices and dependencies |
