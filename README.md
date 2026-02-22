@@ -1,8 +1,19 @@
-# Rift: Bitcoin L2 Execution Layer
+# ⚡ Rift Protocol: Bitcoin L2 Execution Layer
 
 > **Instant, Trustless Bitcoin Execution on Starknet.**
 
 Rift eliminates Bitcoin's 10-minute block latency by verifying the L1 mempool using ZK-proofs on Starknet. It enables sub-second reaction times for Runes/Ordinals trading and gaming by proving the existence of unconfirmed Bitcoin transactions.
+
+---
+
+## 🏆 Hackathon Submission
+
+**For Judges**: Start here → [Hackathon Submission Document](docs/HACKATHON_SUBMISSION.md)
+
+- ✅ **Live Demo**: `./watcher/run-hackathon-demo.sh`
+- ✅ **2-Minute Pitch Script**: Included in submission doc
+- ✅ **Technical Deep Dive**: Full architecture documented
+- ✅ **Judge Checklist**: Evaluation criteria addressed
 
 ---
 

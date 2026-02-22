@@ -12,7 +12,8 @@
 * [👁️ Rift Watcher](watcher/README.md)
 
 ## Hackathon & Demo
-* [🎯 Hackathon Demo](docs/HACKATHON_DEMO.md)
+* [🏆 Hackathon Submission (For Judges)](docs/HACKATHON_SUBMISSION.md) ⭐ **START HERE**
+* [🎯 Demo Guide (Technical)](docs/HACKATHON_DEMO.md)
 * [⚠️ RPC Issues](docs/RPC_ISSUES.md)
 
 ## Future Development
