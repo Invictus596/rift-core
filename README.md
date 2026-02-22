@@ -6,14 +6,14 @@ Rift eliminates Bitcoin's 10-minute block latency by verifying the L1 mempool us
 
 ---
 
-## 🏆 Hackathon Submission
+## 📋 Technical Overview
 
-**For Judges**: Start here → [Hackathon Submission Document](docs/HACKATHON_SUBMISSION.md)
+**New to Rift Protocol?** Start here → [Technical Overview Document](docs/TECHNICAL_OVERVIEW.md)
 
 - ✅ **Live Demo**: `./watcher/run-hackathon-demo.sh`
-- ✅ **2-Minute Pitch Script**: Included in submission doc
+- ✅ **2-Minute Presentation Script**: Included in overview
 - ✅ **Technical Deep Dive**: Full architecture documented
-- ✅ **Judge Checklist**: Evaluation criteria addressed
+- ✅ **Evaluation Criteria**: Project highlights addressed
 
 ---
 

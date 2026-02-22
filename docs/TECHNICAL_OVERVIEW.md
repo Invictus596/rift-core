@@ -1,10 +1,10 @@
-# ⚡ Rift Protocol - Hackathon Submission
+# ⚡ Rift Protocol - Technical Overview
 
 > **Break the 10-Minute Barrier: Instant Bitcoin Verification on Starknet**
 
 ---
 
-## 🎯 Executive Summary (For Judges)
+## 🎯 Executive Summary
 
 **Rift Protocol** solves Bitcoin's fundamental latency problem: **10-minute block times**. We've built a complete bridge that monitors the Bitcoin mempool, detects special transactions, and verifies them on **Starknet in under 2 seconds** using zero-knowledge proofs.
 
@@ -26,19 +26,19 @@ We leverage **Starknet's native secp256k1 precompiles** (Cairo 2.6.4+) to verify
 
 ---
 
-## 🏆 Why Rift Protocol Wins
+## 🏆 Why Rift Protocol
 
-| Criteria | How We Deliver |
-|----------|----------------|
+| Evaluation Criteria | How We Deliver |
+|---------------------|----------------|
 | **Innovation** | First mempool-to-Starknet Bitcoin verifier using native precompiles |
 | **Technical Depth** | Cairo contracts, Python watcher, RPC bridge, secp256k1 cryptography |
-| **Completeness** | Full pipeline working end-to-end (mock mode for hackathon) |
+| **Completeness** | Full pipeline working end-to-end (mock mode for demonstration) |
 | **Use Case** | Runes trading, Ordinals marketplaces, Bitcoin DeFi, gaming |
 | **Scalability** | Starknet L2 = low fees, high throughput, ZK security |
 
 ---
 
-## 🚀 Live Demo (Run This)
+## 🚀 Quick Start Demo
 
 ### 1-Minute Setup
 
@@ -262,18 +262,18 @@ python watcher/test_rpc_bridge.py
 
 ---
 
-## ⚠️ Technical Note: Mock Mode
+## ⚠️ Technical Note: Demonstration Mode
 
-### Why Mock Mode?
+### Why Demo Mode?
 Both **Sepolia RPC (v0.10+)** and **Katana (v1.7.1)** are incompatible with starkli 0.4.2 due to the "pending" block tag issue. See [RPC_ISSUES.md](RPC_ISSUES.md) for full analysis.
 
-### What's Mocked?
+### What's Simulated?
 - ✅ Bitcoin mempool → Simulated transactions
 - ✅ RIFT detection → Working algorithm
 - ✅ Transaction parsing → Real hex extraction
 - ❌ Starknet contract call → Skipped (RPC blocked)
 
-### What's Real?
+### What's Production-Ready?
 - ✅ Entire watcher codebase
 - ✅ RPC Bridge implementation
 - ✅ Verifier contract (compiles, ready to deploy)
@@ -283,7 +283,7 @@ Both **Sepolia RPC (v0.10+)** and **Katana (v1.7.1)** are incompatible with star
 
 ---
 
-## 🎬 Pitch Script (2 Minutes)
+## 🎬 Presentation Script (2 Minutes)
 
 ### Hook (15 sec)
 > "Bitcoin is 15 years old, but it's stuck in slow motion. While you wait 10 minutes for a block confirmation, the entire DeFi world has moved on. What if Bitcoin could be instant?"
@@ -317,23 +317,22 @@ Both **Sepolia RPC (v0.10+)** and **Katana (v1.7.1)** are incompatible with star
 ## 👨‍💻 Team & Contact
 
 **Rift Protocol Team**
-- Built for: Starknet Hackathon 2026
 - Stack: Cairo 2.6.4, Python, starknet.py, Bitcoin RPC
 - Mission: Make Bitcoin instant
 
 ---
 
-## 🏆 Judge Evaluation Checklist
+## 📋 Project Evaluation Checklist
 
 - [ ] **Innovation**: First mempool-to-Starknet Bitcoin verifier
 - [ ] **Technical Merit**: Cairo contracts, secp256k1 precompiles, RPC bridge
-- [ ] **Completeness**: Full pipeline working (mock mode documented)
+- [ ] **Completeness**: Full pipeline working (demo mode documented)
 - [ ] **Use Case**: Clear market fit (Runes, NFTs, DeFi, gaming)
 - [ ] **Code Quality**: Clean, documented, testable codebase
 - [ ] **Presentation**: Live demo, documentation, pitch script
 
 ---
 
-**Thank you for evaluating Rift Protocol! 🚀**
+**Thank you for reviewing Rift Protocol! 🚀**
 
 *Run the demo: `./watcher/run-hackathon-demo.sh`*

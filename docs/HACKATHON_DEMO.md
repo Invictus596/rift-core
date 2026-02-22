@@ -1,6 +1,6 @@
-# Rift Protocol - Hackathon Demo Guide
+# Rift Protocol - Demonstration Guide
 
-> **Quick start guide for hackathon demonstrations and presentations.**
+> **Quick start guide for demonstrations and presentations.**
 
 ---
 
@@ -10,10 +10,10 @@ This guide shows you how to run the Rift Protocol demonstration in **mock mode**
 
 ### What You'll Demonstrate
 
-✅ **Bitcoin Mempool Monitoring** - Real-time transaction polling  
-✅ **RIFT Tag Detection** - OP_RETURN pattern recognition  
-✅ **Transaction Parsing** - Hex data extraction and analysis  
-✅ **RPC Bridge Architecture** - Ready for Starknet integration  
+✅ **Bitcoin Mempool Monitoring** - Real-time transaction polling
+✅ **RIFT Tag Detection** - OP_RETURN pattern recognition
+✅ **Transaction Parsing** - Hex data extraction and analysis
+✅ **RPC Bridge Architecture** - Ready for Starknet integration
 
 ### Why Mock Mode?
 
@@ -266,7 +266,7 @@ if MOCK_MODE and iteration_count >= 50:  # Was 20
 
 ---
 
-## 🎯 Next Steps After Hackathon
+## 🎯 Next Steps
 
 1. **Monitor RPC Providers** - Wait for "pending" tag support
 2. **Deploy to Sepolia** - Once RPC issues resolved
@@ -276,7 +276,7 @@ if MOCK_MODE and iteration_count >= 50:  # Was 20
 
 ---
 
-## 💡 Hackathon Pitch
+## 💡 Project Pitch
 
 > "Rift Protocol enables **instant Bitcoin execution** on Starknet. While Bitcoin waits 10 minutes for blocks, we verify transactions in **under 2 seconds** using ZK-proofs. Perfect for Runes trading, Ordinals marketplaces, and Bitcoin gaming."
 
@@ -289,4 +289,4 @@ if MOCK_MODE and iteration_count >= 50:  # Was 20
 
 ---
 
-**Good luck at the hackathon! 🚀**
+**Ready to demonstrate Rift Protocol! 🚀**
