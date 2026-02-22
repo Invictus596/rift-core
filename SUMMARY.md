@@ -11,7 +11,7 @@
 ## Watcher & Bridge
 * [👁️ Rift Watcher](watcher/README.md)
 
-## Hackathon & Demo
+## Demonstration
 * [📋 Technical Overview](docs/TECHNICAL_OVERVIEW.md) ⭐ **START HERE**
 * [🎯 Demo Guide (Technical)](docs/HACKATHON_DEMO.md)
 * [⚠️ RPC Issues](docs/RPC_ISSUES.md)
