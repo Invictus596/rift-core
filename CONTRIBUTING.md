@@ -141,6 +141,6 @@ We appreciate all contributions, big or small! Every PR helps make Rift Protocol
 
 **⚡ Making Bitcoin Instant**
 
-Built with ❤️ by the Rift Protocol Team
+Built with ❤️ by Invictus
 
 </div>
