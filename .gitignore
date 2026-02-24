@@ -69,4 +69,32 @@ desktop.ini
 .idea/
 *.swp
 *.swo
-*~QWEN.md
+*~
+
+# QWEN memory (personal assistant)
+QWEN.md
+
+# Test & Coverage
+.pytest_cache/
+.coverage
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Video recordings (demo videos)
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# Starknet/Katana accounts (contain private keys)
+.starkli-accounts/
+*.account.json
+*.private_key.json
+
+# Personal submission guides (not for public repo)
+SUBMISSION_CHECKLIST.md
+SUBMISSION_SUMMARY.md

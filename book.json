@@ -1,0 +1,87 @@
+{
+  "title": "Rift Protocol Documentation",
+  "description": "Break the 10-Minute Barrier: Instant Bitcoin Verification on Starknet",
+  "author": "Rift Protocol Team",
+  "language": "en",
+  "direction": "ltr",
+  
+  "root": "./",
+  
+  "structure": {
+    "readme": "docs/README.md",
+    "summary": "SUMMARY.md"
+  },
+  
+  "plugins": [
+    "search",
+    "lunr",
+    "-search-pro",
+    "codeblock-label",
+    "copy-code-button",
+    "expandable-chapters",
+    "anchors",
+    "github",
+    "theme-default"
+  ],
+  
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/your-repo"
+    },
+    "theme-default": {
+      "showLevel": true,
+      "styles": {
+        "ebook": "styles/ebook.css",
+        "website": "styles/website.css",
+        "pdf": "styles/pdf.css",
+        "mobi": "styles/mobi.css",
+        "epub": "styles/epub.css"
+      }
+    }
+  },
+  
+  "links": {
+    "sidebar": {
+      "GitHub": "https://github.com/your-repo",
+      "Technical Overview": "docs/TECHNICAL_OVERVIEW.md",
+      "Demo Guide": "docs/HACKATHON_DEMO.md"
+    },
+    "sharing": {
+      "github": true,
+      "twitter": true,
+      "linkedin": true,
+      "facebook": false
+    }
+  },
+  
+  "pdf": {
+    "pageNumbers": true,
+    "fontSize": 12,
+    "paperSize": "a4",
+    "margin": {
+      "right": 62,
+      "left": 62,
+      "top": 36,
+      "bottom": 36
+    },
+    "headerTemplate": null,
+    "footerTemplate": "<div style=\"text-align: center; color: #999;\"><span class=\"page\"></span> / <span class=\"total\"></span></div>"
+  },
+  
+  "epub": {
+    "publisher": "Rift Protocol Team",
+    "author": "Rift Protocol Team",
+    "language": "en"
+  },
+  
+  "mobi": {
+    "publisher": "Rift Protocol Team",
+    "author": "Rift Protocol Team"
+  },
+  
+  "honorsGitignore": true,
+  "app": {
+    "id": "rift-protocol-docs",
+    "name": "Rift Protocol"
+  }
+}
