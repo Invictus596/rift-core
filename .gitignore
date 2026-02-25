@@ -98,3 +98,6 @@ temp/
 # Personal submission guides (not for public repo)
 SUBMISSION_CHECKLIST.md
 SUBMISSION_SUMMARY.md
+
+# Internal notes (keep locally, don't track)
+docs/RPC_ISSUES.md
