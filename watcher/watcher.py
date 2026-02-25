@@ -89,26 +89,29 @@ def contains_rift_tag(transaction_hex):
 
 def extract_op_return_data(transaction_hex):
     """Extract OP_RETURN data from a transaction hex"""
-    # This is a simplified extraction - in reality, parsing Bitcoin transactions
-    # requires more sophisticated handling of the transaction format
+    # Bitcoin OP_RETURN format: 6a <push_bytes> <data>
+    # Where 6a is OP_RETURN opcode, followed by pushdata length, then the data
+    # 
+    # Note: '6a' can appear in P2PKH scripts (76a914 = OP_DUP OP_HASH160 PUSHDATA(20))
+    # We need to find the OP_RETURN in an output script, which comes after:
+    # - Output value (8 bytes little-endian)
+    # - Script length varint
+    # - Then: 6a (OP_RETURN) <push> <data>
     try:
-        # Find the OP_RETURN opcode (0x6a) followed by the data
-        op_return_pos = transaction_hex.find('6a')
-        if op_return_pos != -1:
-            # Extract the next few bytes as potential OP_RETURN data
-            start = op_return_pos + 2  # Skip the 6a opcode
-            # Get the length byte and corresponding data
-            if start + 2 <= len(transaction_hex):
-                length_hex = transaction_hex[start:start+2]
-                try:
-                    length = int(length_hex, 16)
-                    data_start = start + 2
-                    data_end = data_start + (length * 2)  # Each byte is represented by 2 hex chars
-                    if data_end <= len(transaction_hex):
-                        op_return_data = transaction_hex[data_start:data_end]
-                        return op_return_data
-                except ValueError:
-                    pass
+        # Look for the pattern: 6a followed by a pushdata byte, then data
+        # We search for all '6a' and validate the context
+        import re
+        for match in re.finditer(r'6a([0-9a-f]{2})', transaction_hex.lower()):
+            pos = match.start()
+            push_len = int(match.group(1), 16)
+            
+            # Sanity check: OP_RETURN data should be reasonable (1-80 bytes)
+            if 0 < push_len <= 80:
+                data_start = pos + 4  # Skip '6a' + length byte (2 hex chars each)
+                data_end = data_start + (push_len * 2)
+                if data_end <= len(transaction_hex):
+                    op_return_data = transaction_hex[data_start:data_end]
+                    return op_return_data
     except Exception:
         pass
 

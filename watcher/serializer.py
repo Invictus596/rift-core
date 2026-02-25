@@ -48,22 +48,22 @@ def main():
     """Test the hex_to_felt_array function with mock data"""
     print("Testing hex_to_felt_array function:")
     print("=" * 50)
-    
+
     # Create a sample hex string similar to what would come from Bitcoin transactions
-    # This simulates a typical Bitcoin transaction hex
-    sample_tx_hex = "0200000001abcd1234ef567890abcd1234ef567890abcd1234ef567890abcd1234ef567890000000001976a914efgh5678ijkl9012efgh5678ijkl9012efgh567888acffffffff0100000000000000001976a914mnop3456qrst7890mnop3456qrst7890mnop345688ac00000000"
-    
+    # This simulates a typical Bitcoin transaction hex (valid hex chars only: 0-9, a-f)
+    sample_tx_hex = "0200000001abcd1234ef567890abcd1234ef567890abcd1234ef567890abcd1234ef567890000000001976a914efab5678cdab1234efab5678cdab1234efab567888acffffffff0100000000000000001976a914abab3456cdab7890abab3456cdab7890abab345688ac00000000"
+
     print(f"Sample transaction hex: {sample_tx_hex[:64]}...")  # Show first 64 chars
     print(f"Full length: {len(sample_tx_hex)} characters")
     print()
-    
+
     # Convert to felt array
     felt_array = hex_to_felt_array(sample_tx_hex)
-    
+
     print(f"Felt array ({len(felt_array)} elements):")
     for i, felt in enumerate(felt_array):
         print(f"  [{i}]: {felt}")
-    
+
     print()
     print("Serialization completed successfully!")
 
