@@ -45,7 +45,8 @@
 
 ### Planned Phases
 * [📋 Phase 4: The Executor](docs/PHASE4_EXECUTOR_PLAN.md)
-* [🎯 Phase 5: Production Demo](README.md#-project-status--roadmap)
+* [🎨 Phase 5: Frontend Dashboard](docs/PHASE5_FRONTEND.md)
+* [🎯 Phase 6: Production Demo](README.md#-project-status--roadmap)
 
 ## 🔍 Use Cases
 
@@ -146,6 +147,7 @@ rift-core-internal/
 | **Setup Dev Env** | [Getting Started](docs/getting_started.md) | 15 min |
 | **RPC Issues** | [RPC Problems](docs/RPC_ISSUES.md) | 5 min |
 | **Phase 4 Plan** | [Executor Plan](docs/PHASE4_EXECUTOR_PLAN.md) | 10 min |
+| **Phase 5 Frontend** | [Frontend Dashboard](docs/PHASE5_FRONTEND.md) | 10 min |
 
 ---
 

@@ -105,6 +105,7 @@ source .venv/bin/activate
 | **Serializer** | `watcher/serializer.py` | Python | ✅ Working |
 | **Verifier** | `contracts/src/verifier.cairo` | Cairo 2.6.4 | ✅ Compiles |
 | **Executor** | `contracts/src/executor.cairo` | Cairo 2.6.4 | 📋 Phase 4 |
+| **Frontend** | `frontend/` | Next.js + 21st.dev | 📋 Phase 5 |
 
 ---
 
@@ -258,7 +259,12 @@ python watcher/test_rpc_bridge.py
 - 📋 Sepolia testnet deployment
 - 📋 Real Bitcoin node integration
 - 📋 Production signature extraction
-- 📋 Frontend dashboard
+
+### Phase 5 (Frontend UI)
+- 📋 Next.js dashboard with Tailwind CSS
+- 📋 Real-time verification monitoring
+- 📋 Bento Grid architecture visualization
+- 📋 21st.dev component integration
 
 ---
 
@@ -317,7 +323,7 @@ Both **Sepolia RPC (v0.10+)** and **Katana (v1.7.1)** are incompatible with star
 ## 👨‍💻 Team & Contact
 
 **Rift Protocol Team**
-- Stack: Cairo 2.6.4, Python, starknet.py, Bitcoin RPC
+- Stack: Cairo 2.6.4, Python, starknet.py, Bitcoin RPC, Next.js, Tailwind CSS, shadcn/ui
 - Mission: Make Bitcoin instant
 
 ---

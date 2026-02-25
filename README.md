@@ -54,6 +54,7 @@
 | **Verifier** | Cairo 2.6.4 | Verifies Bitcoin ECDSA/Schnorr signatures on-chain | ✅ Complete |
 | **RPC Bridge** | starknet.py | Python-to-Starknet communication layer | ✅ Complete |
 | **Executor** | Starknet | Mints wrapped assets (Phase 4) | 📋 Planned |
+| **Frontend** | Next.js + 21st.dev | Visual dashboard for Listen-Verify-Execute pipeline | 📋 Phase 5 |
 
 ---
 
@@ -67,7 +68,8 @@
 | **Phase 2** | The Verifier | ✅ Build Complete | Cairo 2.6.4 contract with interface-implementation pattern. Mock verification enabled for E2E testing. |
 | **Phase 3** | RPC Bridge | ✅ Complete | Python-to-Starknet bridge using starknet.py. Watcher can now call Verifier contract on Katana/Starknet. |
 | **Phase 4** | The Executor | 📋 Planned | L2 Contract to mint wrapped assets based on verified L1 events ([Plan](docs/PHASE4_EXECUTOR_PLAN.md)) |
-| **Phase 5** | Production Demo | 🎯 Next | Full on-chain deployment (blocked by RPC provider issues) |
+| **Phase 5** | Frontend Dashboard | 📋 In Progress | Next.js UI with Tailwind CSS, shadcn/ui, and 21st.dev components for visualizing the pipeline |
+| **Phase 6** | Production Demo | 🎯 Next | Full on-chain deployment (blocked by RPC provider issues) |
 
 > ⚠️ **Note**: On-chain deployment is blocked by RPC compatibility issues with both Sepolia (v0.10+) and Katana (v1.7.1). Both don't support the "pending" block tag that starkli 0.4.2 requires. See [docs/RPC_ISSUES.md](docs/RPC_ISSUES.md) for details. We demonstrate the full architecture in mock mode for the hackathon.
 
@@ -93,7 +95,8 @@ We are currently in **Phase 3** — Python-to-Starknet RPC bridge complete. **Ha
 | **Phase 2** | The Verifier | ✅ Build Complete | Cairo 2.6.4 contract with interface-implementation pattern. Mock verification enabled for E2E testing. |
 | **Phase 3** | RPC Bridge | ✅ Complete | Python-to-Starknet bridge using starknet.py. Watcher can now call Verifier contract on Katana/Starknet. |
 | **Phase 4** | The Executor | 📋 Planned | L2 Contract to mint wrapped assets based on verified L1 events ([Plan](docs/PHASE4_EXECUTOR_PLAN.md)) |
-| **Phase 5** | The Demo | 🎯 Hackathon Ready | Mock mode demonstration (full pipeline, simulated Starknet calls) |
+| **Phase 5** | Frontend Dashboard | 📋 In Progress | Next.js UI with Tailwind CSS, shadcn/ui, and 21st.dev components for visualizing the pipeline |
+| **Phase 6** | Production Demo | 🎯 Next | Full on-chain deployment (blocked by RPC provider issues) |
 
 > **Note**: On-chain deployment is blocked by RPC compatibility issues with both Sepolia (v0.10+) and Katana (v1.7.1). Both don't support the "pending" block tag that starkli 0.4.2 requires. See [docs/RPC_ISSUES.md](docs/RPC_ISSUES.md) for details. We demonstrate the full architecture in mock mode for the hackathon.
 
