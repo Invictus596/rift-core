@@ -1,28 +1,52 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Bitcoin, Eye, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Spotlight } from "@/components/ui/spotlight";
-import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { NumberTicker } from "@/components/ui/number-ticker";
+import { Timeline } from "@/components/ui/timeline";
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const bitcoinRef = useRef<HTMLDivElement>(null);
-  const watcherRef = useRef<HTMLDivElement>(null);
-  const starknetRef = useRef<HTMLDivElement>(null);
-
-  // Type assertion for AnimatedBeam compatibility
-  const containerAsHTMLElement = containerRef as React.RefObject<HTMLElement>;
-  const bitcoinAsHTMLElement = bitcoinRef as React.RefObject<HTMLElement>;
-  const watcherAsHTMLElement = watcherRef as React.RefObject<HTMLElement>;
-  const starknetAsHTMLElement = starknetRef as React.RefObject<HTMLElement>;
+  const timelineData = [
+    {
+      title: "Step 1: The Watcher",
+      content: (
+        <p className="text-white/80 text-sm md:text-base">
+          Our Python agent constantly monitors the live Bitcoin mempool for specific OP_RETURN <span className="text-purple-400 font-semibold">RIFT</span> tags.
+        </p>
+      ),
+    },
+    {
+      title: "Step 2: Cairo Verifier",
+      content: (
+        <p className="text-white/80 text-sm md:text-base">
+          Our Cairo 2.6.4 smart contracts mathematically prove the transaction validity using <span className="text-purple-400 font-semibold">secp256k1 signatures</span> directly on Starknet.
+        </p>
+      ),
+    },
+    {
+      title: "Step 3: The Executor",
+      content: (
+        <p className="text-white/80 text-sm md:text-base">
+          The final L2 action layer where <span className="text-purple-400 font-semibold">wrapped assets are minted</span> instantly upon verification.
+        </p>
+      ),
+    },
+    {
+      title: "Mock Mode Demo",
+      content: (
+        <p className="text-white/80 text-sm md:text-base">
+          For this hackathon, this pipeline is running in an engineered high-speed simulation, successfully verifying <span className="text-green-400 font-semibold">12+ txs in 50 seconds</span>.
+        </p>
+      ),
+    },
+  ];
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-black overflow-hidden">
+    <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Full-page FlickeringGrid background */}
       <div className="absolute inset-0">
         <FlickeringGrid
@@ -50,75 +74,25 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-            Making Bitcoin <span className="text-purple-400 font-semibold">Instant</span>. 
+            Making Bitcoin <span className="text-purple-400 font-semibold">Instant</span>.
             Break the 10-minute barrier with{" "}
             <span className="text-white/80">zero-knowledge L2 execution</span>.
           </p>
         </motion.div>
+      </section>
 
-        {/* Architecture Section - AnimatedBeam */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-24 md:mt-32 w-full max-w-5xl mx-auto"
-        >
-          <div className="relative h-48 md:h-64">
-            {/* Nodes */}
-            <div className="absolute inset-0 flex items-center justify-between px-4 md:px-12">
-              {/* Bitcoin Node */}
-              <div
-                ref={bitcoinRef}
-                className="relative z-10 flex flex-col items-center gap-4"
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-orange-500/20 to-orange-600/20 border-2 border-orange-500/50 flex items-center justify-center shadow-lg shadow-orange-500/20">
-                  <Bitcoin className="w-10 h-10 md:w-12 md:h-12 text-orange-400" />
-                </div>
-                <span className="text-white/70 font-medium text-sm md:text-base">Bitcoin</span>
-              </div>
-
-              {/* Python Watcher Node */}
-              <div
-                ref={watcherRef}
-                className="relative z-10 flex flex-col items-center gap-4"
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-2 border-blue-500/50 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                  <Eye className="w-10 h-10 md:w-12 md:h-12 text-blue-400" />
-                </div>
-                <span className="text-white/70 font-medium text-sm md:text-base">Python Watcher</span>
-              </div>
-
-              {/* Starknet Node */}
-              <div
-                ref={starknetRef}
-                className="relative z-10 flex flex-col items-center gap-4"
-              >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-2 border-purple-500/50 flex items-center justify-center shadow-lg shadow-purple-500/20">
-                  <Shield className="w-10 h-10 md:w-12 md:h-12 text-purple-400" />
-                </div>
-                <span className="text-white/70 font-medium text-sm md:text-base">Starknet</span>
-              </div>
-            </div>
-
-            {/* Animated Beams */}
-            <AnimatedBeam
-              containerRef={containerAsHTMLElement}
-              fromRef={bitcoinAsHTMLElement}
-              toRef={watcherAsHTMLElement}
-              curvature={-40}
-              gradientStartColor="#f97316"
-              gradientStopColor="#3b82f6"
-            />
-            <AnimatedBeam
-              containerRef={containerAsHTMLElement}
-              fromRef={watcherAsHTMLElement}
-              toRef={starknetAsHTMLElement}
-              curvature={-40}
-              gradientStartColor="#3b82f6"
-              gradientStopColor="#a855f7"
-            />
-          </div>
-        </motion.div>
+      {/* Architecture Timeline Section */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Timeline data={timelineData} />
+          </motion.div>
+        </div>
       </section>
 
       {/* Terminal Section */}
@@ -147,7 +121,7 @@ export default function Home() {
               className="rounded-2xl bg-white/5 border border-white/10 p-8 backdrop-blur-sm"
             >
               <div className="text-zinc-400 text-sm font-sans tracking-wide mb-2">Mempool Txs Scanned</div>
-              <div className="text-5xl md:text-6xl font-mono tracking-tighter text-white">
+              <div className="text-5xl md:text-6xl font-mono font-bold tracking-tighter text-white dark:text-white">
                 <NumberTicker value={45230} />
               </div>
               <div className="mt-4 text-green-400 text-sm flex items-center gap-2">
@@ -164,7 +138,7 @@ export default function Home() {
               className="rounded-2xl bg-white/5 border border-white/10 p-8 backdrop-blur-sm"
             >
               <div className="text-zinc-400 text-sm font-sans tracking-wide mb-2">Proofs Verified</div>
-              <div className="text-5xl md:text-6xl font-mono tracking-tighter text-white">
+              <div className="text-5xl md:text-6xl font-mono font-bold tracking-tighter text-white dark:text-white">
                 <NumberTicker value={12} />
               </div>
               <div className="mt-4 text-purple-400 text-sm flex items-center gap-2">
