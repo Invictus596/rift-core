@@ -157,14 +157,29 @@ export default function Home() {
             © 2025 Rift Protocol. Building on Bitcoin & Starknet.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-white/40 hover:text-white/80 text-sm transition-colors">
+            <a
+              href="https://invictus-4.gitbook.io/rift-docs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white/80 text-sm transition-colors"
+            >
               Documentation
             </a>
-            <a href="#" className="text-white/40 hover:text-white/80 text-sm transition-colors">
+            <a
+              href="https://github.com/Invictus596/rift-core"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white/80 text-sm transition-colors"
+            >
               GitHub
             </a>
-            <a href="#" className="text-white/40 hover:text-white/80 text-sm transition-colors">
-              Devpost
+            <a
+              href="https://dorahacks.io/buidl/39188/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white/80 text-sm transition-colors"
+            >
+              DoraHacks
             </a>
           </div>
         </div>
